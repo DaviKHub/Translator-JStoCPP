@@ -7,11 +7,10 @@ public class Lexer {
     private final List<Token> tokens = new ArrayList<>();
 
     static {
-        // 1️⃣ Сначала ключевые слова, чтобы не спутать их с идентификаторами
         TOKEN_PATTERNS.put(Pattern.compile("\\b(var|let|const|if|else|while|for|return|function)\\b"), TokenType.KEYWORD);
         TOKEN_PATTERNS.put(Pattern.compile("\"[^\"]*\"|'[^']*'"), TokenType.STRING);
         TOKEN_PATTERNS.put(Pattern.compile("\\b\\d+(\\.\\d+)?\\b"), TokenType.NUMBER);
-        TOKEN_PATTERNS.put(Pattern.compile("[+\\-*/=<>!&|:.]+"), TokenType.OPERATOR);  // 2️⃣ Теперь `:` распознаётся как оператор
+        TOKEN_PATTERNS.put(Pattern.compile("[+\\-*/=<>!&|:.]+"), TokenType.OPERATOR);
         TOKEN_PATTERNS.put(Pattern.compile("[{}();,]"), TokenType.SEPARATOR);
         TOKEN_PATTERNS.put(Pattern.compile("//.*|/\\*.*?\\*/"), TokenType.COMMENT);
         TOKEN_PATTERNS.put(Pattern.compile("\\b[a-zA-Z_][a-zA-Z0-9_]*\\b"), TokenType.IDENTIFIER);
